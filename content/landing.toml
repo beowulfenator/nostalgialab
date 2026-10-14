@@ -1,0 +1,123 @@
+# Sekcie úvodnej stránky (všetko pod úvodným blokom).
+# Nadpis a text úvodného bloku sú v content/pages/home.md.
+#
+# Textové polia sú v Markdowne. Ak odstránite celú sekciu (jej [tabuľku]
+# aj všetky [[podtabuľky]]), zmizne zo stránky aj z bočnej navigácie.
+
+[intro]
+nav = "Úvod"
+button = "Zistiť viac"
+
+
+# --- Prístup: striedajúce sa bloky obrázok + text ------------------------------
+[about]
+nav = "Náš prístup"
+
+[[about.items]]
+title = "Inžinierstvo s dlhou životnosťou"
+text = """
+Najlepší softvér je ten, ktorý sa dá o päť rokov ešte stále čítať, upravovať a rozvíjať. \
+Staviame na overených technológiách, čistej architektúre a dôkladných testoch.
+
+Jednoduchosť pre nás nie je kompromis, ale cieľ.
+"""
+image = "images/pic01.jpg"
+image_position = "center center"
+
+[[about.items]]
+title = "Poradenstvo bez skratiek"
+text = """
+Pomôžeme vám zorientovať sa vo svete technológií: vybrať vhodné nástroje, zhodnotiť \
+existujúce riešenie alebo naplánovať ďalší krok.
+
+Otvorene, vecne a s ohľadom na váš rozpočet – aj keď je najlepšou radou nič nemeniť.
+"""
+image = "images/pic02.jpg"
+image_position = "center center"
+
+[[about.items]]
+title = "Partnerstvo, nie len dodávka"
+text = """
+Za každým projektom je skutočný biznis a skutoční ľudia. Pracujeme v krátkych \
+iteráciách, priebežne ukazujeme výsledky a o rozhodnutiach hovoríme zrozumiteľne.
+
+Na konci nedostanete len kód, ale aj dokumentáciu a znalosti, ako s ním pracovať ďalej.
+"""
+image = "images/pic03.jpg"
+image_position = "center center"
+
+
+# --- Služby: mriežka ------------------------------------------------------------
+# icon: trieda Font Awesome 5 s prefixom štýlu:
+#   "solid fa-code", "fa-gem" (regular), "brands fa-github"
+[services]
+nav = "Čo robíme"
+title = "Čo robíme"
+text = """
+Od prvého nápadu cez návrh a vývoj až po prevádzku. Môžeme prevziať celý projekt, \
+posilniť váš tím alebo vám len pomôcť s rozhodnutím, ktoré vás trápi.
+"""
+
+[[services.features]]
+icon = "solid fa-code"
+title = "Vývoj softvéru na mieru"
+text = "Aplikácie navrhnuté presne podľa vašich procesov – od interných nástrojov po systémy, na ktorých stojí celý biznis."
+
+[[services.features]]
+icon = "solid fa-layer-group"
+title = "Webové aplikácie a API"
+text = "Spoľahlivé webové riešenia a rozhrania, ktoré zvládnu rast a dobre sa prepájajú s ostatnými systémami."
+
+[[services.features]]
+icon = "solid fa-history"
+title = "Modernizácia starších systémov"
+text = "Staré aplikácie nemusíte zahodiť. Postupne ich zrefaktorujeme, zabezpečíme a pripravíme na ďalšie roky."
+
+[[services.features]]
+icon = "solid fa-compass"
+title = "Technologické poradenstvo"
+text = "Výber technológií, návrh architektúry a plánovanie projektov. Nezávislý pohľad, ktorý šetrí čas aj peniaze."
+
+[[services.features]]
+icon = "solid fa-search"
+title = "Audit kódu a architektúry"
+text = "Dôkladná analýza existujúceho riešenia: kvalita kódu, bezpečnosť, výkon a konkrétne odporúčania, čo zlepšiť."
+
+[[services.features]]
+icon = "solid fa-cogs"
+title = "Automatizácia a integrácie"
+text = "Prepojíme vaše nástroje a zautomatizujeme opakujúcu sa prácu, aby sa váš tím mohol venovať tomu podstatnému."
+
+[[services.features]]
+icon = "solid fa-chalkboard-teacher"
+title = "Školenia a mentoring"
+text = "Workshopy a individuálny mentoring pre vývojárov a tímy – od dobrých praktík po konkrétne technológie."
+
+[[services.features]]
+icon = "solid fa-shield-alt"
+title = "Spoľahlivá prevádzka"
+text = "Nasadenie, monitoring a údržba, aby váš softvér fungoval aj vtedy, keď sa naň nikto nepozerá."
+
+
+# --- Kontakt --------------------------------------------------------------------
+[contact]
+nav = "Kontakt"
+title = "Ozvite sa"
+text = """
+Máte projekt, nápad alebo len otázku? Napíšte nám pár viet o tom, čo riešite. \
+Prvá konzultácia je nezáväzná a ozveme sa zvyčajne do jedného pracovného dňa.
+"""
+# Toto je statický web, formulár preto potrebuje externú službu
+# (napr. Formspree). Ak necháte prázdne, zobrazia sa len kontaktné údaje.
+form_action = ""
+email = "hello@nostalgialab.sk"  # TODO: potvrdiť
+# phone = "+421 000 000 000"
+# address = """
+# Ulica 1
+# 811 01 Bratislava
+# """
+
+# [[contact.social]]
+# icon = "brands fa-github"
+# label = "GitHub"
+# url = "https://github.com/..."

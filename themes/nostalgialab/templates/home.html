@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{#
+	The landing page. Hero text comes from content/pages/home.md; every other
+	section comes from content/landing.toml (loaded by plugins/landing.py).
+	A section is left out when it has no entry in landing.toml.
+#}
+
+{% set about = LANDING.about %}
+{% set services = LANDING.services %}
+{% set contact = LANDING.contact %}
+
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block meta %}
+		{% if page.summary %}<meta name="description" content="{{ page.summary | striptags }}" />{% endif %}
+{% endblock %}
+
+{% block header %}
+		<section id="sidebar">
+			<div class="inner">
+				<nav>
+					<ul>
+						<li><a href="#intro">{{ LANDING.intro.nav | default('Úvod') }}</a></li>
+						{% if about %}<li><a href="#about">{{ about.nav }}</a></li>{% endif %}
+						{% if services %}<li><a href="#services">{{ services.nav }}</a></li>{% endif %}
+						{% if contact %}<li><a href="#contact">{{ contact.nav }}</a></li>{% endif %}
+					</ul>
+				</nav>
+			</div>
+		</section>
+{% endblock %}
+
+{% block content %}
+			<section id="intro" class="wrapper style1 fullscreen fade-up">
+				<div class="inner">
+					<h1>{{ page.title }}</h1>
+					{{ page.content }}
+					{% set next = 'about' if about else 'services' if services else 'contact' if contact else none %}
+					{% if next %}
+					<ul class="actions">
+						<li><a href="#{{ next }}" class="button scrolly">{{ LANDING.intro.button | default('Zistiť viac') }}</a></li>
+					</ul>
+					{% endif %}
+				</div>
+			</section>
+
+			{% if about %}
+			<section id="about" class="wrapper style2 spotlights">
+				{% for item in about['items'] %}
+				<section>
+					<a {% if item.link %}href="{{ item.link }}" {% endif %}class="image"><img src="{{ SITEURL }}/{{ item.image }}" alt="" data-position="{{ item.image_position | default('center center') }}" /></a>
+					<div class="content">
+						<div class="inner">
+							<h2>{{ item.title }}</h2>
+							{{ item.text | markdown }}
+							{% if item.link %}
+							<ul class="actions">
+								<li><a href="{{ item.link }}" class="button">{{ item.link_label | default('Zistiť viac') }}</a></li>
+							</ul>
+							{% endif %}
+						</div>
+					</div>
+				</section>
+				{% endfor %}
+			</section>
+			{% endif %}
+
+			{% if services %}
+			<section id="services" class="wrapper style3 fade-up">
+				<div class="inner">
+					<h2>{{ services.title }}</h2>
+					{{ services.text | default('') | markdown }}
+					{% if services.features %}
+					<div class="features">
+						{% for feature in services.features %}
+						<section>
+							<span class="icon major {{ feature.icon }}"></span>
+							<h3>{{ feature.title }}</h3>
+							{{ feature.text | markdown }}
+						</section>
+						{% endfor %}
+					</div>
+					{% endif %}
+					{% if services.link %}
+					<ul class="actions">
+						<li><a href="{{ services.link }}" class="button">{{ services.link_label | default('Zistiť viac') }}</a></li>
+					</ul>
+					{% endif %}
+				</div>
+			</section>
+			{% endif %}
+
+			{% if contact %}
+			<section id="contact" class="wrapper style1 fade-up">
+				<div class="inner">
+					<h2>{{ contact.title }}</h2>
+					{{ contact.text | default('') | markdown }}
+					{% if contact.form_action %}
+					<div class="split style1">
+						<section>
+							<form method="post" action="{{ contact.form_action }}">
+								<div class="fields">
+									<div class="field half">
+										<label for="name">Meno</label>
+										<input type="text" name="name" id="name" required />
+									</div>
+									<div class="field half">
+										<label for="email">E-mail</label>
+										<input type="email" name="email" id="email" required />
+									</div>
+									<div class="field">
+										<label for="message">Správa</label>
+										<textarea name="message" id="message" rows="5" required></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Odoslať správu" /></li>
+								</ul>
+							</form>
+						</section>
+					{% endif %}
+						<section>
+							<ul class="contact">
+								{% if contact.address %}
+								<li>
+									<h3>Adresa</h3>
+									<span>{{ contact.address | trim | replace('\n', '<br />\n') }}</span>
+								</li>
+								{% endif %}
+								{% if contact.email %}
+								<li>
+									<h3>E-mail</h3>
+									<a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+								</li>
+								{% endif %}
+								{% if contact.phone %}
+								<li>
+									<h3>Telefón</h3>
+									<a href="tel:{{ contact.phone | replace(' ', '') }}">{{ contact.phone }}</a>
+								</li>
+								{% endif %}
+								{% if contact.social %}
+								<li>
+									<h3>Sociálne siete</h3>
+									<ul class="icons">
+										{% for s in contact.social %}
+										<li><a href="{{ s.url }}" class="icon {{ s.icon }}"><span class="label">{{ s.label }}</span></a></li>
+										{% endfor %}
+									</ul>
+								</li>
+								{% endif %}
+							</ul>
+						</section>
+					{% if contact.form_action %}
+					</div>
+					{% endif %}
+				</div>
+			</section>
+			{% endif %}
+{% endblock %}
+
+{% block footer_style %}style1-alt{% endblock %}

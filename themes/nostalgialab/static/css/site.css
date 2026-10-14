@@ -1,0 +1,24 @@
+/* Site-specific additions on top of the Hyperspace stylesheet. */
+
+/* Operator / legal details in the footer */
+#footer .operator {
+	font-size: 0.8em;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.65);
+	margin-bottom: 1.5em;
+}
+
+#footer .operator p {
+	margin: 0 0 0.35em 0;
+}
+
+#footer .operator .operator-name {
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: bold;
+}
+
+#footer .operator .menu {
+	font-size: 1em;
+	color: inherit;
+	margin: 0 0 0.35em 0;
+}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title | striptags }} · {{ SITENAME }}{% endblock %}
+
+{% block meta %}
+		{% if page.summary %}<meta name="description" content="{{ page.summary | striptags }}" />{% endif %}
+{% endblock %}
+
+{% block content %}
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<h1 class="major">{{ page.title }}</h1>
+					{% if page.image %}<span class="image fit"><img src="{{ SITEURL }}/{{ page.image }}" alt="" /></span>{% endif %}
+					{{ page.content }}
+				</div>
+			</section>
+{% endblock %}

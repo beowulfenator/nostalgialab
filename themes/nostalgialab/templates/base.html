@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+	Based on Hyperspace by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html lang="{{ DEFAULT_LANG }}">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+		{% block meta %}{% endblock %}
+		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main-{{ THEME_COLOR | default('purple') }}.css" />
+		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/site.css" />
+		<noscript><link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/noscript.css" /></noscript>
+		{% block head %}{% endblock %}
+	</head>
+	<body class="is-preload">
+
+		{% block header %}
+		<header id="header">
+			<a href="{{ SITEURL }}/" class="title">{{ SITENAME }}</a>
+			<nav>
+				<ul>
+					<li><a href="{{ SITEURL }}/">Domov</a></li>
+					{% if DISPLAY_PAGES_ON_MENU %}
+					{% for p in pages if p.slug != 'home' %}
+					<li><a href="{{ SITEURL }}/{{ p.url }}"{% if p == page %} class="active"{% endif %}>{{ p.title }}</a></li>
+					{% endfor %}
+					{% endif %}
+				</ul>
+			</nav>
+		</header>
+		{% endblock %}
+
+		<div id="wrapper">
+			{% block content %}{% endblock %}
+		</div>
+
+		<footer id="footer" class="wrapper {% block footer_style %}alt{% endblock %}">
+			<div class="inner">
+				{% if OPERATOR %}
+				{% set op = OPERATOR %}
+				<div class="operator">
+					<p class="operator-name">{{ op.name }}</p>
+					<ul class="menu">
+						{% if op.address %}<li>{{ op.address }}</li>{% endif %}
+						{% if op.email %}<li><a href="mailto:{{ op.email }}">{{ op.email }}</a></li>{% endif %}
+						{% if op.phone %}<li><a href="tel:{{ op.phone | replace(' ', '') }}">{{ op.phone }}</a></li>{% endif %}
+					</ul>
+					<ul class="menu">
+						{% if op.ico %}<li>IČO {{ op.ico }}</li>{% endif %}
+						{% if op.dic %}<li>DIČ {{ op.dic }}</li>{% endif %}
+						{% if op.ic_dph %}<li>IČ DPH {{ op.ic_dph }}</li>{% endif %}
+						{% if op.vat_payer is sameas false %}<li>Nie je platiteľ DPH</li>{% endif %}
+					</ul>
+					{% if op.register %}
+					<p>Zapísaný v {{ op.register }}.</p>
+					{% endif %}
+					{% if op.authority %}
+					<p>Orgán dozoru: {{ op.authority }}.</p>
+					{% endif %}
+				</div>
+				{% endif %}
+				<ul class="menu">
+					<li>&copy; {{ CURRENT_YEAR }} {{ SITENAME }}. Všetky práva vyhradené.</li>
+				</ul>
+			</div>
+		</footer>
+
+		<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.min.js"></script>
+		<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.scrollex.min.js"></script>
+		<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.scrolly.min.js"></script>
+		<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/browser.min.js"></script>
+		<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/breakpoints.min.js"></script>
+		<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/util.js"></script>
+		<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Blog · {{ SITENAME }}{% endblock %}
+
+{% block content %}
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<h1 class="major">Blog</h1>
+					{% for article in articles_page.object_list %}
+					<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+					<p><small>{{ article.locale_date }}</small></p>
+					{{ article.summary }}
+					{% else %}
+					<p>Zatiaľ tu nič nie je.</p>
+					{% endfor %}
+				</div>
+			</section>
+{% endblock %}
