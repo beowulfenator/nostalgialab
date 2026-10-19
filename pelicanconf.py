@@ -68,7 +68,7 @@ OPERATOR = {
     "ic_dph": None,  # e.g. "SK1234567890" if registered for VAT
     "vat_payer": False,  # True = VAT payer; False shows "Nie je platiteľ DPH"
     "register": "Živnostenskom registri Okresného úradu Bratislava, č. 110-371090",
-    "email": "hello@nostalgialab.sk",  # TODO: confirm
+    "email": "hello@nostalgialab.sk",
     "phone": None,  # e.g. "+421 900 000 000"
     "authority": "Slovenská obchodná inšpekcia, Bajkalská 21/A, 827 99 Bratislava",
 }

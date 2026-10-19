@@ -110,7 +110,7 @@ Prvá konzultácia je nezáväzná a ozveme sa zvyčajne do jedného pracovného
 # Toto je statický web, formulár preto potrebuje externú službu
 # (napr. Formspree). Ak necháte prázdne, zobrazia sa len kontaktné údaje.
 form_action = ""
-email = "hello@nostalgialab.sk"  # TODO: potvrdiť
+email = "hello@nostalgialab.sk"
 # phone = "+421 000 000 000"
 # address = """
 # Ulica 1
